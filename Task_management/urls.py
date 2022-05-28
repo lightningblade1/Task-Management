@@ -16,7 +16,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #path('login/', LoginView.as_view()),
     url('CreateFolder', CreateFolder.as_view()),
-    path('log-out/', LogoutView.as_view(), name='log_out'),
-    url('CreateTask', CreateTask.as_view()),
+    path('log-out/', LogoutView.as_view(), name='log_out'),  # call it "logout"
+    url('CreateTask', CreateTask.as_view()),  # keep your URLs lower-case -> create-task; even better stick with REST convention -> make sure to check the quickstart of DRF: https://www.django-rest-framework.org/tutorial/quickstart/#quickstart
 
 ]
