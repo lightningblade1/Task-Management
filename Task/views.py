@@ -43,11 +43,14 @@ class LoginView(viewsets.ModelViewSet):
         return Response(serializer.data)
 
 
-@method_decorator(csrf_exempt, name='post')
+@method_decorator(csrf_exempt, name='post')  # why not controlling for csrf? 
 class CreateTask(APIView):
+    # Use a prebuild apiview for all the CRUD logic: https://www.django-rest-framework.org/api-guide/viewsets/#modelviewset
+    # if you need any customization, just overwrite the desired method
+
     serializer_class = TaskSerializer  # This gives the serializer class that will be used deserialize input think of it as a form class
 
-    def get_queryset(self):
+    def get_queryset(self):  # use DRF's permission framework for that: https://www.django-rest-framework.org/api-guide/permissions/
         if self.request.user.is_authenticated:
             tasks = Task.objects.all()
 
@@ -60,7 +63,7 @@ class CreateTask(APIView):
             params = kwargs
             id = request.query_params["id"]
             if id != None:
-                folder_query = Task.objects.get(id=id)
+                folder_query = Task.objects.get(id=id)  # 'folder_query' is misleading
                 serializer = TaskSerializer(folder_query)
                 return Response(serializer.data)
         else:
@@ -128,7 +131,7 @@ class CreateTask(APIView):
             return Response(status=statuscode)
 
 
-class CreateFolder(APIView):
+class CreateFolder(APIView):  # don't call the class "Create..." if it is also handling Update, Read and Delete -> something like CRUDFolder would be better
     serializer_class = FolderSerializer
 
     # The generic functions below are convinient because they create frontend elements by default in REST framework API

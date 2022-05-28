@@ -9,7 +9,7 @@ from Task.models import Task, Folder
 
 @shared_task
 def Task_reapeater():
-    print("hi")
+    print("hi")  # remove print statements like these from your code; never check them to you git
     Task_obj = Task.objects.filter(Completed=True)
     for i in Task_obj:
         date = i.Due_date
@@ -27,4 +27,4 @@ def Task_reapeater():
                 user_obj = User.objects.get(id=int(user.id))
                 new_task.Responsible_user.add(user_obj)
             new_task.save()
-    return
+    return  # no need for empty return; just erase the line

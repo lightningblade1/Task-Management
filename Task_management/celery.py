@@ -1,3 +1,5 @@
+# why do you need celery in the project?
+
 from __future__ import absolute_import, unicode_literals
 
 import os

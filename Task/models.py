@@ -1,3 +1,7 @@
+# in general, keep your field attributes in lower-case
+# check this for best practices on Django projects https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/
+
+
 from django.contrib.auth.models import User
 from django.db import models
 

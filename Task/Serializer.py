@@ -1,3 +1,5 @@
+# do not mix the capitalization on files; lower-case is best practice -> serializer.py
+
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
@@ -35,7 +37,7 @@ class LoginSerializer(
     serializers.Serializer):  # the idea of serializers it that your taking something that is specifically a python DT, and moving it to something readable by Django auth
     # This serializer defines fields for authentication:
     # It will try to authenticate the user with when validated.
-    # https: // www.guguweb.com / 2022 / 01 / 23 / django - rest - framework - authentication - the - easy - way /
+    # https: // www.guguweb.com / 2022 / 01 / 23 / django - rest - framework - authentication - the - easy - way /  make your URLs clickable
     username = serializers.CharField(
         label="Username",
         write_only=True
